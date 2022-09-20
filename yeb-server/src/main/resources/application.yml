@@ -1,0 +1,44 @@
+server:
+  # 服务端口
+  port: 8081
+
+spring:
+  # 数据源配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://d9city.net:8309/yeb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: jimy3k0519
+    hikari:
+      # 连接池名
+      pool-name: DataHikariCP
+      # 最小空闲时间
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 最大连接数，默认10
+      maximum-pool-size: 10
+      # 从连接池返回的连接自动提交
+      auto-commit: true
+      # 连接最大存活时间，0表示永久存活，默认1800000（30分钟）
+      max-lifetime: 1800000
+      # 连接超时时间，默认30000（30秒）
+      connection-timeout: 30000
+      # 测试连接是否可用的查询语句
+      connection-test-query: SELECT 1
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 设置自动驼峰命名
+    map-underscore-to-camel-case: false
+    # 设置Mybatis-plus 全局配置
+  global-config:
+    db-config:
+      table-prefix: t_        #设置实体类对应表名的统一前缀：t_
+  # 配置类型别名所对应的包  mapper中 *Mapper.xml 使用类型别名，会用到。
+  type-aliases-package: com.nicole.server.pojo
+  # 配置Mapper映射文件
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+
