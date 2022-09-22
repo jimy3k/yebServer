@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
  * 服务实现类
  * </p>
  *
- * @author jimy3k
- * @since 2022-09-21
+ * @author zhanglishen
+ * @since 2020-11-14
  */
 @Service
 public class AppraiseServiceImpl extends ServiceImpl<AppraiseMapper, Appraise> implements IAppraiseService {

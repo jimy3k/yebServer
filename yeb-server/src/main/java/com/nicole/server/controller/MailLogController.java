@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
  * 前端控制器
  * </p>
  *
- * @author jimy3k
- * @since 2022-09-21
+ * @author zhanglishen
+ * @since 2020-11-14
  */
 @RestController
 @RequestMapping("/mail-log")

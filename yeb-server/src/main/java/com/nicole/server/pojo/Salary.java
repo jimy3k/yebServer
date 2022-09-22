@@ -3,11 +3,11 @@ package com.nicole.server.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -17,12 +17,11 @@ import java.time.LocalDateTime;
  *
  * </p>
  *
- * @author jimy3k
- * @since 2022-09-21
+ * @author zhanglishen
+ * @since 2020-11-14
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @TableName("t_salary")
 @ApiModel(value = "Salary对象", description = "")
 public class Salary implements Serializable {
@@ -55,6 +54,7 @@ public class Salary implements Serializable {
     private Float pensionPer;
 
     @ApiModelProperty(value = "启用时间")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
     private LocalDateTime createDate;
 
     @ApiModelProperty(value = "医疗基数")

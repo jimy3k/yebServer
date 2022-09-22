@@ -8,8 +8,8 @@ import com.nicole.server.pojo.SysMsg;
  * Mapper 接口
  * </p>
  *
- * @author jimy3k
- * @since 2022-09-21
+ * @author zhanglishen
+ * @since 2020-11-14
  */
 public interface SysMsgMapper extends BaseMapper<SysMsg> {
 
