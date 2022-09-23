@@ -14,10 +14,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */
@@ -36,10 +32,10 @@ public class Joblevel implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "职称名称")
-    @Excel(name = "职称名称", width = 15)
-    @NonNull
-    private String name;
+  @ApiModelProperty(value = "职称名称")
+  @Excel(name = "职称名称", width = 15)
+  @NonNull
+  private String name;
 
     @ApiModelProperty(value = "职称等级")
     private String titleLevel;

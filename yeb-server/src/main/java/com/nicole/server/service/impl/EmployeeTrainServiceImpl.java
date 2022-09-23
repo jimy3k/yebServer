@@ -7,14 +7,11 @@ import com.nicole.server.service.IEmployeeTrainService;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
  * 服务实现类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 @Service
-public class EmployeeTrainServiceImpl extends ServiceImpl<EmployeeTrainMapper, EmployeeTrain> implements IEmployeeTrainService {
-
-}
+public class EmployeeTrainServiceImpl extends ServiceImpl<EmployeeTrainMapper, EmployeeTrain>
+    implements IEmployeeTrainService {}

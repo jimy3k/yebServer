@@ -13,10 +13,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */
@@ -53,9 +49,9 @@ public class Salary implements Serializable {
     @ApiModelProperty(value = "养老金比率")
     private Float pensionPer;
 
-    @ApiModelProperty(value = "启用时间")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
-    private LocalDateTime createDate;
+  @ApiModelProperty(value = "启用时间")
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
+  private LocalDateTime createDate;
 
     @ApiModelProperty(value = "医疗基数")
     private Integer medicalBase;

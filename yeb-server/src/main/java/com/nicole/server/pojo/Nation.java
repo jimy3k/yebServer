@@ -12,10 +12,6 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/** 当未登录或者token失效是访问接口时,自定义返回结果 */
+/** 当未登录或者token实效是访问接口时,自定义返回结果 */
 @Component
 public class RestAuthorizationEntryPoint implements AuthenticationEntryPoint {
 
@@ -22,8 +22,7 @@ public class RestAuthorizationEntryPoint implements AuthenticationEntryPoint {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-    // RespBean bean = RespBean.error("权限不足请联系管理员");
-    RespBean bean = RespBean.error("RestAuthorizationEntryPoint" + "尚未登录，请登录!");
+    RespBean bean = RespBean.error("RestAuthorizationEntryPoint + 未登录!");
         bean.setCode(401);
         out.write(new ObjectMapper().writeValueAsString(bean));
         out.flush();

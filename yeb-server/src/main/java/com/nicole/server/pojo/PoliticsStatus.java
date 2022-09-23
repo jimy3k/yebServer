@@ -12,10 +12,6 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */
@@ -34,10 +30,8 @@ public class PoliticsStatus implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "政治面貌")
-    @Excel(name = "政治面貌", width = 15)
-    @NonNull
-    private String name;
-
-
+  @ApiModelProperty(value = "政治面貌")
+  @Excel(name = "政治面貌", width = 15)
+  @NonNull
+  private String name;
 }

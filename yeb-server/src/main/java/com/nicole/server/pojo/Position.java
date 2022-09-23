@@ -14,10 +14,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */
@@ -36,14 +32,14 @@ public class Position implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "职位")
-    @Excel(name = "职位", width = 15)
-    @NonNull
-    private String name;
+  @ApiModelProperty(value = "职位")
+  @Excel(name = "职位", width = 15)
+  @NonNull
+  private String name;
 
-    @ApiModelProperty(value = "创建时间")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
-    private LocalDateTime createDate;
+  @ApiModelProperty(value = "创建时间")
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Shanghai")
+  private LocalDateTime createDate;
 
     @ApiModelProperty(value = "是否启用")
     private Boolean enabled;

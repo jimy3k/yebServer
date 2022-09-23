@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * <p>
  * 前端控制器
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
@@ -26,9 +24,9 @@ public class MenuController {
     @Autowired
     private IMenuService menuService;
 
-    @ApiOperation(value = "通过用户ID查询菜单列表")
-    @GetMapping("/menu")
-    public List<Menu> getMenusByAdminId() {
+  @ApiOperation(value = "通过用户ID查询菜单列表")
+  @GetMapping("/menu")
+  public List<Menu> getMenusByAdminId() {
         return menuService.getMenusByAdminId();
     }
 

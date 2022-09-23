@@ -9,12 +9,11 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author zhanglishen
  */
-
 @Configuration
 public class MybatisPlusConfig {
 
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
+  @Bean
+  public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
     }
 }

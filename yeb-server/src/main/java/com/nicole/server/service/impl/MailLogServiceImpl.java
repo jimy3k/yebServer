@@ -7,14 +7,11 @@ import com.nicole.server.service.IMailLogService;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
  * 服务实现类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 @Service
-public class MailLogServiceImpl extends ServiceImpl<MailLogMapper, MailLog> implements IMailLogService {
-
-}
+public class MailLogServiceImpl extends ServiceImpl<MailLogMapper, MailLog>
+    implements IMailLogService {}

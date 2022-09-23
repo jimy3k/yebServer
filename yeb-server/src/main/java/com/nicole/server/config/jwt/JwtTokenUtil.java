@@ -43,13 +43,13 @@ public class JwtTokenUtil {
         return generateToken(claims);
     }
 
-    /**
-     * 从token获取用户信息
-     *
-     * @param token
-     * @return
-     */
-    public String getUserNameFromToken(String token) {
+  /**
+   * 从token获取用户信息
+   *
+   * @param token
+   * @return
+   */
+  public String getUserNameFromToken(String token) {
         String username = null;
         Claims claims = getClaimsFromToken(token);
         try {
@@ -60,43 +60,42 @@ public class JwtTokenUtil {
         return username;
     }
 
-    /**
-     * token是否有效
-     *
-     * @param token
-     * @param userDetails
-     * @return
-     */
-    public Boolean validateToken(String token, UserDetails userDetails) {
+  /**
+   * token是否有效
+   *
+   * @param token
+   * @param userDetails
+   * @return
+   */
+  public Boolean validateToken(String token, UserDetails userDetails) {
         String username = getUserNameFromToken(token);
         return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
-    /**
-     * 判断token是否可以被刷新
-     *
-     * @param token
-     * @return
-     */
-    public Boolean canRefresh(String token) {
+  /**
+   * 判断token是否可以被刷新
+   *
+   * @param token
+   * @return
+   */
+  public Boolean canRefresh(String token) {
         return !isTokenExpired(token);
     }
 
-    /**
-     * 刷新token
-     *
-     * @param token
-     * @return
-     */
-    public String refreshToken(String token) {
+  /**
+   * 刷新token
+   *
+   * @param token
+   * @return
+   */
+  public String refreshToken(String token) {
         Claims claims = getClaimsFromToken(token);
-        claims.put(CLAIM_KEY_CREATED, new Date());
+    claims.put(CLAIM_KEY_CREATED, new Date());
         return generateToken(claims);
     }
 
     /**
      * 判断token是否失效
-     *
      * @param token
      * @return
      */
@@ -108,7 +107,6 @@ public class JwtTokenUtil {
 
     /**
      * 从token中获取实效时间
-     *
      * @param token
      * @return
      */
@@ -119,7 +117,6 @@ public class JwtTokenUtil {
 
     /**
      * 根据token获取荷载
-     *
      * @param token
      * @return
      */

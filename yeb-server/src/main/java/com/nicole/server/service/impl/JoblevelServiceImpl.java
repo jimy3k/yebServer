@@ -7,14 +7,11 @@ import com.nicole.server.service.IJoblevelService;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
  * 服务实现类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 @Service
-public class JoblevelServiceImpl extends ServiceImpl<JoblevelMapper, Joblevel> implements IJoblevelService {
-
-}
+public class JoblevelServiceImpl extends ServiceImpl<JoblevelMapper, Joblevel>
+    implements IJoblevelService {}

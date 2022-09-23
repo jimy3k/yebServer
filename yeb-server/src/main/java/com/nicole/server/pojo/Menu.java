@@ -13,10 +13,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */

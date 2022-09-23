@@ -12,22 +12,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * <p>
  * 服务实现类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 @Service
-public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Department> implements IDepartmentService {
+public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Department>
+    implements IDepartmentService {
 
     @Autowired
     private DepartmentMapper departmentMapper;
 
     /**
      * 查询所有部门
-     *
      * @return
      */
     @Override
@@ -38,7 +36,6 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
 
     /**
      * 添加部门
-     *
      * @param dep
      * @return
      */
@@ -46,8 +43,8 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
     public RespBean addDep(Department dep) {
         dep.setEnabled(true);
         departmentMapper.addDep(dep);
-        if (1 == dep.getResult()) {
-            return RespBean.success("添加成功", dep);
+    if (1 == dep.getResult()) {
+      return RespBean.success("添加成功", dep);
         }
 
         return RespBean.error("添加失败");
@@ -55,7 +52,6 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
 
     /**
      * 删除部门
-     *
      * @param id
      * @return
      */
@@ -64,13 +60,13 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
         Department department = new Department();
         department.setId(id);
         departmentMapper.deleteDep(department);
-        if (-2 == department.getResult()) {
+    if (-2 == department.getResult()) {
             return RespBean.error("该部门下有子部门，删除失败！");
         }
-        if (-1 == department.getResult()) {
+    if (-1 == department.getResult()) {
             return RespBean.error("该部门下有员工，删除失败！");
         }
-        if (1 == department.getResult()) {
+    if (1 == department.getResult()) {
             return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败");

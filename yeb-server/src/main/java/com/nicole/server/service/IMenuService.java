@@ -6,9 +6,7 @@ import com.nicole.server.pojo.Menu;
 import java.util.List;
 
 /**
- * <p>
  * 服务类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14

@@ -12,10 +12,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */

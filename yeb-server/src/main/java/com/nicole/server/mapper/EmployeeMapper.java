@@ -10,28 +10,28 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * <p>
  * Mapper 接口
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 public interface EmployeeMapper extends BaseMapper<Employee> {
 
-    /**
-     * 查询所有员工（分页）
-     *
-     * @param page
-     * @param employee
-     * @param beginDateScope
-     * @return
-     */
-    IPage<Employee> getEmployeeByPage(Page<Employee> page, @Param("employee") Employee employee, @Param("beginDateScope") LocalDate[] beginDateScope);
+  /**
+   * 查询所有员工（分页）
+   *
+   * @param page
+   * @param employee
+   * @param beginDateScope
+   * @return
+   */
+  IPage<Employee> getEmployeeByPage(
+      Page<Employee> page,
+      @Param("employee") Employee employee,
+      @Param("beginDateScope") LocalDate[] beginDateScope);
 
     /**
      * 查询员工
-     *
      * @param id
      * @return
      */
@@ -39,7 +39,6 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
 
     /**
      * 获取所有工资套账
-     *
      * @param page
      * @return
      */

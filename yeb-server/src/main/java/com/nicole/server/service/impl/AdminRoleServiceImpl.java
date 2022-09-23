@@ -7,14 +7,11 @@ import com.nicole.server.service.IAdminRoleService;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
  * 服务实现类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 @Service
-public class AdminRoleServiceImpl extends ServiceImpl<AdminRoleMapper, AdminRole> implements IAdminRoleService {
-
-}
+public class AdminRoleServiceImpl extends ServiceImpl<AdminRoleMapper, AdminRole>
+    implements IAdminRoleService {}

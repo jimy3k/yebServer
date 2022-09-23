@@ -36,22 +36,24 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
         String header = httpServletRequest.getHeader(tokenHeader);
-        //存在token
-        if (header != null && header.startsWith(tokenHead)) {
+    // 存在token
+    if (header != null && header.startsWith(tokenHead)) {
             String authToken = header.substring(tokenHead.length());
             String username = jwtTokenUtil.getUserNameFromToken(authToken);
-            //token存在,但是未登录
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+      // token存在,但是未登录
+      if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 //登录
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-                //验证token是否有效,重新设置用户对象
-                if (jwtTokenUtil.validateToken(authToken, userDetails)) {
-                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        // 验证token是否有效,重新设置用户对象
+        if (jwtTokenUtil.validateToken(authToken, userDetails)) {
+          UsernamePasswordAuthenticationToken authenticationToken =
+              new UsernamePasswordAuthenticationToken(
+                  userDetails, null, userDetails.getAuthorities());
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
             }
         }
-        filterChain.doFilter(httpServletRequest, httpServletResponse);
+    filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

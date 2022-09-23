@@ -25,17 +25,17 @@ public class FastDFSUtils {
             String filePath = new ClassPathResource("fdfs_client.conf").getFile().getAbsolutePath();
             ClientGlobal.init(filePath);
         } catch (Exception e) {
-            logger.error("FastDFS Client Init Fail! ", e);
+      logger.error("FastDFS Client Init Fail! ", e);
         }
     }
 
-    /**
-     * 上传文件
-     *
-     * @param file
-     * @return
-     */
-    public static String[] upload(MultipartFile file) {
+  /**
+   * 上传文件
+   *
+   * @param file
+   * @return
+   */
+  public static String[] upload(MultipartFile file) {
         String filename = file.getOriginalFilename();
         logger.info("File Name :" + filename);
         long startTime = System.currentTimeMillis();
@@ -46,7 +46,9 @@ public class FastDFSUtils {
             storageClient = getStorageClient();
             //上传
             try {
-                uploadResults = storageClient.upload_file(file.getBytes(), filename.substring(filename.lastIndexOf(".") + 1), null);
+        uploadResults =
+            storageClient.upload_file(
+                file.getBytes(), filename.substring(filename.lastIndexOf(".") + 1), null);
             } catch (IOException e) {
                 logger.error("IO Exception when uploadind the file:" + filename, e);
             }
@@ -54,8 +56,8 @@ public class FastDFSUtils {
             logger.error("Non IO Exception when uploadind the file:" + filename, e);
         }
         logger.info("upload_file time used:" + (System.currentTimeMillis() - startTime) + " ms");
-        //验证上传结果
-        if (uploadResults == null && storageClient != null) {
+    // 验证上传结果
+    if (uploadResults == null && storageClient != null) {
             logger.error("upload file fail, error code:" + storageClient.getErrorCode());
         }
         //上传成功返回groupName
@@ -63,33 +65,33 @@ public class FastDFSUtils {
         return uploadResults;
     }
 
-    /**
-     * 获取文件信息
-     *
-     * @param groupName
-     * @param remoteFileName
-     * @return
-     */
-    public static FileInfo getFileInfo(String groupName, String remoteFileName) {
+  /**
+   * 获取文件信息
+   *
+   * @param groupName
+   * @param remoteFileName
+   * @return
+   */
+  public static FileInfo getFileInfo(String groupName, String remoteFileName) {
         try {
             StorageClient storageClient = getStorageClient();
-            return storageClient.get_file_info(groupName, remoteFileName);
+      return storageClient.get_file_info(groupName, remoteFileName);
         } catch (IOException e) {
             logger.error("IO Exception: Get File from Fast DFS failed", e);
-        } catch (Exception e) {
+    } catch (Exception e) {
             logger.error("Non IO Exception: Get File from Fast DFS failed", e);
         }
         return null;
     }
 
-    /**
-     * 下载
-     *
-     * @param groupName
-     * @param remoteFileName
-     * @return
-     */
-    public static InputStream downFile(String groupName, String remoteFileName) {
+  /**
+   * 下载
+   *
+   * @param groupName
+   * @param remoteFileName
+   * @return
+   */
+  public static InputStream downFile(String groupName, String remoteFileName) {
         try {
             StorageClient storageClient = getStorageClient();
             byte[] bytes = storageClient.download_file(groupName, remoteFileName);
@@ -97,20 +99,20 @@ public class FastDFSUtils {
             return inputStream;
         } catch (IOException e) {
             logger.error("IO Exception: Get File from Fast DFS failed", e);
-        } catch (Exception e) {
+    } catch (Exception e) {
             logger.error("Non IO Exception: Get File from Fast DFS failed", e);
         }
         return null;
     }
 
-    /**
-     * 删除文件
-     *
-     * @param groupName
-     * @param remoteFileName
-     * @throws Exception
-     */
-    public static void deleteFile(String groupName, String remoteFileName) throws Exception {
+  /**
+   * 删除文件
+   *
+   * @param groupName
+   * @param remoteFileName
+   * @throws Exception
+   */
+  public static void deleteFile(String groupName, String remoteFileName) throws Exception {
         StorageClient storageClient = getStorageClient();
         int i = storageClient.delete_file(groupName, remoteFileName);
         logger.info("delete file successfully!!!" + i);
@@ -118,7 +120,6 @@ public class FastDFSUtils {
 
     /**
      * 生成Storage客户端
-     *
      * @return
      */
     private static StorageClient getStorageClient() throws IOException {
@@ -129,7 +130,6 @@ public class FastDFSUtils {
 
     /**
      * 生成Tracker服务器端
-     *
      * @return
      */
     private static TrackerServer getTrackerServer() throws IOException {
@@ -138,12 +138,12 @@ public class FastDFSUtils {
         return trackerServer;
     }
 
-    /**
-     * 获取文件路径
-     *
-     * @return
-     */
-    public static String getTrackerUrl() {
+  /**
+   * 获取文件路径
+   *
+   * @return
+   */
+  public static String getTrackerUrl() {
         TrackerClient trackerClient = new TrackerClient();
         TrackerServer trackerServer = null;
         StorageServer storageServer = null;
@@ -153,7 +153,7 @@ public class FastDFSUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "http://" + storageServer.getInetSocketAddress().getHostString() + ":8888/";
+    return "http://" + storageServer.getInetSocketAddress().getHostString() + ":8888/";
     }
 
 }

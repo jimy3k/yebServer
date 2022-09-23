@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    @PostMapping("/hello")
-    public String hello() {
+  @PostMapping("/hello")
+  public String hello() {
         return "hello";
     }
 
-    @GetMapping("/employee/base/hello")
-    public String hello2() {
+  @GetMapping("/employee/base/hello")
+  public String hello2() {
         return "/employee/base/hello";
     }
 
-    @GetMapping("/employee/advanced/hello")
-    public String hello3() {
+  @GetMapping("/employee/advanced/hello")
+  public String hello3() {
         return "/employee/advanced/hello";
     }
 }

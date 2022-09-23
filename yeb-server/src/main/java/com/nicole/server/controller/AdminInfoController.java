@@ -55,6 +55,6 @@ public class AdminInfoController {
         //获取文件上传地址
         String[] uploadPath = FastDFSUtils.upload(file);
         String url = FastDFSUtils.getTrackerUrl() + uploadPath[0] + "/" + uploadPath[1];
-        return adminService.updateAdminUserFace(url, id, authentication);
+    return adminService.updateAdminUserFace(url, id, authentication);
     }
 }

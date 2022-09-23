@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Swagger配置
  *
- * @author jimy3k
+ * @author zahnglishen
  * @since 1.0.0
  */
 @Configuration
@@ -52,6 +52,8 @@ public class SwaggerConfig {
         apiKeys.add(new ApiKey("Authorization", "Authorization", "header"));
         return apiKeys;
     }
+
+
 
 
     private List<SecurityContext> securityContexts() {

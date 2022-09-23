@@ -14,10 +14,6 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author zhanglishen
  * @since 2020-11-14
  */
@@ -36,10 +32,10 @@ public class Department implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "部门名称")
-    @Excel(name = "部门名称", width = 15)
-    @NonNull
-    private String name;
+  @ApiModelProperty(value = "部门名称")
+  @Excel(name = "部门名称", width = 15)
+  @NonNull
+  private String name;
 
     @ApiModelProperty(value = "父id")
     private Integer parentId;

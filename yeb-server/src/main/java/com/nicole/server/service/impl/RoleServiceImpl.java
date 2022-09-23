@@ -7,14 +7,10 @@ import com.nicole.server.service.IRoleService;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
  * 服务实现类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 @Service
-public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
-
-}
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {}

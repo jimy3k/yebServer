@@ -5,22 +5,19 @@ import com.nicole.server.pojo.MenuRole;
 import com.nicole.server.pojo.RespBean;
 
 /**
- * <p>
  * 服务类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 public interface IMenuRoleService extends IService<MenuRole> {
 
-    /**
-     * 更新角色菜单
-     *
-     * @param rid
-     * @param mids
-     * @return
-     */
-    RespBean updateMenuRole(Integer rid, Integer[] mids);
-
+  /**
+   * 更新角色菜单
+   *
+   * @param rid
+   * @param mids
+   * @return
+   */
+  RespBean updateMenuRole(Integer rid, Integer[] mids);
 }

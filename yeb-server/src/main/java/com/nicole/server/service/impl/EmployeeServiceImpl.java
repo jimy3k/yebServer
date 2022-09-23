@@ -83,8 +83,8 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         LocalDate endContract = employee.getEndContract();
         long days = beginContract.until(endContract, ChronoUnit.DAYS);
         DecimalFormat decimalFormat = new DecimalFormat("##.00");
-        employee.setContractTerm(Double.parseDouble(decimalFormat.format(days / 365.00)));
-        if (1 == employeeMapper.insert(employee)) {
+    employee.setContractTerm(Double.parseDouble(decimalFormat.format(days / 365.00)));
+    if (1 == employeeMapper.insert(employee)) {
             Employee emp = employeeMapper.getEmployee(employee.getId()).get(0);
             //数据库记录发送的消息
             String msgId = UUID.randomUUID().toString();
@@ -99,8 +99,12 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
             mailLog.setCreateTime(LocalDateTime.now());
             mailLog.setUpdateTime(LocalDateTime.now());
             mailLogMapper.insert(mailLog);
-            //发送信息
-            rabbitTemplate.convertAndSend(MailConstants.MAIL_QUEUE_NAME, MailConstants.MAIL_ROUTING_KEY_NAME, emp, new CorrelationData(msgId));
+      // 发送信息
+      rabbitTemplate.convertAndSend(
+          MailConstants.MAIL_QUEUE_NAME,
+          MailConstants.MAIL_ROUTING_KEY_NAME,
+          emp,
+          new CorrelationData(msgId));
             return RespBean.success("添加成功");
         }
         return RespBean.error("添加失败");
@@ -108,7 +112,6 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
 
     /**
      * 查询员工
-     *
      * @param id
      * @return
      */
@@ -119,7 +122,6 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
 
     /**
      * 获取所有员工套账
-     *
      * @param currentPage
      * @param size
      * @return

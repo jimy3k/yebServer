@@ -18,19 +18,19 @@ public class CustomUrlDecisionManager implements AccessDecisionManager {
         for (ConfigAttribute configAttribute : configAttributes) {
             //访问当前url所需的角色
             String needRole = configAttribute.getAttribute();
-            //判断角色是否为登录即可访问的角色,ROLE_LOGIN
-            if ("ROLE_LOGIN".equals(needRole)) {
-                //判断登录
-                if (authentication instanceof AnonymousAuthenticationToken) {
+      // 判断角色是否为登录即可访问的角色,ROLE_LOGIN
+      if ("ROLE_LOGIN".equals(needRole)) {
+        // 判断登录
+        if (authentication instanceof AnonymousAuthenticationToken) {
                     throw new AccessDeniedException("CustomUrlDecisionManager : 尚未登录,请登录!");
-                } else {
+        } else {
                     return;
                 }
             }
             //判断角色是否为url所需角色
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             for (GrantedAuthority authority : authorities) {
-                if (authority.getAuthority().equals(needRole)) {
+        if (authority.getAuthority().equals(needRole)) {
                     return;
                 }
             }

@@ -40,7 +40,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     /**
      * 添加这个Endpoint，这样在网页可以通过websocket连接上服务
      * 也就是我们配置websocket的服务地址，并且可以指定是否使用socketJS
-     *
      * @param registry
      */
     @Override
@@ -56,42 +55,44 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     /**
      * 输入通道参数配置
-     *
      * @param registration
      */
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
-        registration.interceptors(new ChannelInterceptor() {
-            @Override
-            public Message<?> preSend(Message<?> message, MessageChannel channel) {
-                StompHeaderAccessor accessor = MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
-                //判断是否为连接，如果是，需要获取token，并且设置用户对象
-                if (StompCommand.CONNECT.equals(accessor.getCommand())) {
-                    String token = accessor.getFirstNativeHeader("Auth-Token");
-                    if (!StringUtils.isEmpty(token)) {
-                        String authToken = token.substring(tokenHead.length());
-                        String username = jwtTokenUtil.getUserNameFromToken(authToken);
-                        //token中存在用户名
-                        if (!StringUtils.isEmpty(username)) {
-                            //登录
-                            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-                            //验证token是都有效
-                            if (jwtTokenUtil.validateToken(authToken, userDetails)) {
-                                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-                                accessor.setUser(authenticationToken);
-                            }
-                        }
-                    }
+    registration.interceptors(
+        new ChannelInterceptor() {
+          @Override
+          public Message<?> preSend(Message<?> message, MessageChannel channel) {
+            StompHeaderAccessor accessor =
+                MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
+            // 判断是否为连接，如果是，需要获取token，并且设置用户对象
+            if (StompCommand.CONNECT.equals(accessor.getCommand())) {
+              String token = accessor.getFirstNativeHeader("Auth-Token");
+              if (!StringUtils.isEmpty(token)) {
+                String authToken = token.substring(tokenHead.length());
+                String username = jwtTokenUtil.getUserNameFromToken(authToken);
+                // token中存在用户名
+                if (!StringUtils.isEmpty(username)) {
+                  // 登录
+                  UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                  // 验证token是都有效
+                  if (jwtTokenUtil.validateToken(authToken, userDetails)) {
+                    UsernamePasswordAuthenticationToken authenticationToken =
+                        new UsernamePasswordAuthenticationToken(
+                            userDetails, null, userDetails.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    accessor.setUser(authenticationToken);
+                  }
                 }
-                return message;
+              }
             }
+            return message;
+          }
         });
     }
 
     /**
      * 配置消息代理
-     *
      * @param registry
      */
     @Override

@@ -110,5 +110,4 @@
           and m3.enabled = true
         order by m1.id, m2.id, m3.id
     </select>
-
 </mapper>

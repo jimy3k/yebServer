@@ -23,21 +23,22 @@ import java.util.List;
 @Component
 public class CustomFilter implements FilterInvocationSecurityMetadataSource {
 
-    AntPathMatcher antPathMatcher = new AntPathMatcher();
     @Autowired
     private IMenuService menuService;
 
+  AntPathMatcher antPathMatcher = new AntPathMatcher();
+
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
-        //获取请求的url
-        String requestUrl = ((FilterInvocation) o).getRequestUrl();
+    // 获取请求的url
+    String requestUrl = ((FilterInvocation) o).getRequestUrl();
         //System.out.println("requestUrl = " + requestUrl);
         //获取菜单
         List<Menu> menus = menuService.getMenusWithRole();
         //System.out.println("menus = " + menus);
         for (Menu menu : menus) {
-            //判断请求的url与菜单角色是否匹配
-            if (antPathMatcher.match(menu.getUrl(), requestUrl)) {
+      // 判断请求的url与菜单角色是否匹配
+      if (antPathMatcher.match(menu.getUrl(), requestUrl)) {
                 //System.out.println("menu = " + menu.getUrl());
                 String[] str = menu.getRoles().stream().map(Role::getName).toArray(String[]::new);
                 //System.out.println("str = " + str);

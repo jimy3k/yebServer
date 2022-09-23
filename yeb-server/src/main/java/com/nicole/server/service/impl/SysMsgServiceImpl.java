@@ -7,14 +7,11 @@ import com.nicole.server.service.ISysMsgService;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
  * 服务实现类
- * </p>
  *
  * @author zhanglishen
  * @since 2020-11-14
  */
 @Service
-public class SysMsgServiceImpl extends ServiceImpl<SysMsgMapper, SysMsg> implements ISysMsgService {
-
-}
+public class SysMsgServiceImpl extends ServiceImpl<SysMsgMapper, SysMsg>
+    implements ISysMsgService {}
