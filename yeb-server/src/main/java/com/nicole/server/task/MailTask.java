@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 邮件发送定时任务
  *
- * @author zahnglishen
+ * @author jimy3k
  * @since 1.0.0
  */
 @Component

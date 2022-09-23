@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Swagger配置
  *
- * @author zahnglishen
+ * @author jimy3k
  * @since 1.0.0
  */
 

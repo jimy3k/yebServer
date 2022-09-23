@@ -4,6 +4,7 @@ import com.nicole.server.pojo.Admin;
 import com.nicole.server.pojo.AdminLogin;
 import com.nicole.server.pojo.RespBean;
 import com.nicole.server.service.IAdminService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +19,10 @@ import java.security.Principal;
 /**
  * 登录
  *
- * @author zahnglishen
+ * @author jimy3k
  */
 @RestController
+@Api(tags = "AdminLoginController")
 public class AdminLoginController {
 
     @Autowired
